@@ -14,4 +14,5 @@
 
 # The compiled file and python compiled file
 alu
+simple
 *.pyc

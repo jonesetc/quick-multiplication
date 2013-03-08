@@ -1,0 +1,68 @@
+Kyle Jones
+Computer Architecture
+
+Hw # 2 Performance report
+
+All tests were done on my laptop, running Arch linux.
+kernel: 3.7.10-1-ARCH
+gcc version: 4.7.2
+processor: Intel(R) Pentium(R) CPU B950 @ 2.10GHz
+
+-----------------------------------------------------------------------------
+
+Using a c++ implementation of the alu multiplication and division methods
+of using addition, subtraction and shifts, I got the following running 
+statistics in 10,000 runs:
+
+Multiplication:
+
+Average execution time(alu method): 0.0149353711128 seconds
+Standard deviation in execution time(alu method): 0.00520382093191 seconds
+Minimum execution time(alu method): 0.00701189041138 seconds
+Maximum execution time(alu method): 0.0313549041748 seconds
+
+Division:
+
+Average execution time(alu method): 0.0149227817694 seconds
+Standard deviation in execution time(alu method): 0.0053960641613 seconds
+Minimum execution time(alu method): 0.00695204734802 seconds
+Maximum execution time(alu method): 0.0357830524445 seconds
+
+-----------------------------------------------------------------------------
+
+I also ran a version of the program that used only the basic multiplication 
+and division operators. These runs got the following statistics in 
+10,000 runs:
+
+Multiplication:
+
+Average execution time(simple method): 0.0148871823788 seconds
+Standard deviation in execution time(simple method): 0.00524213113589 seconds
+Minimum execution time(simple method): 0.00708389282227 seconds
+Maximum execution time(simple method): 0.0288259983063 seconds
+
+Division:
+
+Average execution time(simple method): 0.0148969889164 seconds
+Standard deviation in execution time(simple method): 0.00541153023321 seconds
+Minimum execution time(simple method): 0.00696897506714 seconds
+Maximum execution time(simple method): 0.0293910503387 seconds
+
+
+-----------------------------------------------------------------------------
+
+These two methods ran at approximately the same speed, with the simple 
+operators performing less than a percent faster than my implementation.
+This is probably due to the fact that the hardware takes the high level 
+multiplication and breaks it down in the hardware all at once, while 
+my implementation is viewed as multiple instructions that must be 
+run one-by-one. I expected the simple version to run faster because of these
+hardware optimizations, but was suprised at how close the two versions
+were in running time.
+
+Possible improvements:
+- Remove functions to reduce overhead (gcc may have already done this)
+- Implement multiple shifts in multiplication at a time to reduce 
+    instuction count
+- Make the program execute many multiplies in a loop to avoid the overhead
+    of creating processes
