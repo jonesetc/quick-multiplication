@@ -12,5 +12,6 @@
 *.la
 *.a
 
-# The compiled file
+# The compiled file and python compiled file
 alu
+*.pyc
